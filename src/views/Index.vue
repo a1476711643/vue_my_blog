@@ -1,11 +1,12 @@
 <template>
 <div>
+  <div class="box">
   <div class="user">
     <div class="pic">
       <img src="../assets/Chain.png" alt=""
            :class="isPicClick? 'animate__animated animate__bounceOut' : 'animate__animated animate__bounceIn'" @click="picClick">
       <p>BladeK</p>
-      <p style="font-size: 20px">「無念無想！煩悩菩提！帰命頂礼！如意宝珠！霸！」</p>
+      <p style="font-size: 20px">「·······························」</p>
     </div>
     <div class="aboutMe">
         <div class="aboutMeImg">
@@ -15,6 +16,7 @@
     </div>
   </div>
   </div>
+</div>
 </template>
 
 <script>
@@ -28,6 +30,10 @@ export default {
   methods:{
     picClick(){
       this.isPicClick = !this.isPicClick
+      // 路由跳转
+      let Go = setTimeout(() => {
+        this.$router.push("/home")
+      },1200)
     }
   }
 }
@@ -35,8 +41,14 @@ export default {
 
 <style>
 body {
-  background: url("../assets/beijing.jpg");
+  width: 100%;
   height: 100%;
+}
+.box {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: url("../assets/beijing.jpg");
 }
 .user {
   width: 500px;
