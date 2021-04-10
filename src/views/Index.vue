@@ -1,5 +1,6 @@
 <template>
 <div>
+  <div class="box">
   <div class="user">
     <div class="pic">
       <img src="../assets/Chain.png" alt=""
@@ -15,6 +16,7 @@
     </div>
   </div>
   </div>
+</div>
 </template>
 
 <script>
@@ -28,15 +30,26 @@ export default {
   methods:{
     picClick(){
       this.isPicClick = !this.isPicClick
+      // 跳转首页
+      console.log("测试");
+      let Go = setTimeout(() =>{
+        this.$router.push({path:"/home"})
+      },1200)
     }
   }
 }
 </script>
 
 <style>
-body {
-  background: url("../assets/beijing.jpg");
+html,body {
+  width: 100%;
   height: 100%;
+}
+.box {
+  width: 100%;
+  height: 100%;
+  background: url("../assets/beijing.jpg");
+  position: absolute;
 }
 .user {
   width: 500px;
@@ -61,11 +74,9 @@ body {
   left: 30%;
   margin-top: 30px;
   border: 1px solid #000;
-  transition: all 1.5s;
 }
 .pic img:hover {
   cursor: pointer;  /*更改鼠标指针*/
-  transform: rotate(360deg) !important;
 }
 .pic p {
   font-size: 40px;
