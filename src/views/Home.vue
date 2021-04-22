@@ -12,27 +12,28 @@
           </div>
 
           <div class="sign allMargin">
-            今天想吃卷肉饭……
+            明天想吃烧肠饭……
           </div>
 
           <!-- 侧边栏 -->
           <div class="navigation allMargin">
             <ul>
               <li v-for="(item,index) in sidebarText">
-                <a href="#" @click="replaceClass(index)"
+                <!--router-link会阻止click事件，得加native native：监听一个原生事件-->
+                <router-link :to="sidebarLinkTo[index]" @click.native="replaceClass(index)"
                    :class="{
                 aTextColor: index != sidebarCurrent,
                  sidebarClick: index == sidebarCurrent,
                   }">
                   <span class="icon"><i :class="sidebarIconClass[index]"></i></span>
                   <span class="title">{{ item }}</span>
-
-                </a>
+                </router-link>
               </li>
             </ul>
           </div>
+
           <!--搜索狂-->
-          <div class="sidebar-search allMargin shadow">
+          <div class="sidebar-search allMargin">
             <input id="search" type="search" name="q"
                    placeholder="有什么不会的？问问我" @keyup.enter="searchSomething()" v-model="searchValue">
           </div>
@@ -45,23 +46,12 @@
               <i :class="item"></i>
             </a>
           </div>
-
-          <aplayer id="audioplayer"
-                   :music="{
-                    title: 'No title',
-                    author: 'れをる,ギガP',
-                    url: require('../assets/song/NoTitle.mp3'),
-                    pic: require('../assets/song/NoTitle.jpg'),
-                    // lrc:require('../assets/song/NoTitle.lrc')
-                    mini:true
-                }" />
-
-
-
         </div>
         <div class="container">
-          <router-view/>
-          <audio id="nibaba" src="../assets/song/NoTitle.mp3" controls=true>12331</audio>
+          <el-card class="box-card">
+          <!--  路由坑 匹配index.js-->
+          <router-view />
+          </el-card>
         </div>
       </div>
     </div>
@@ -69,12 +59,11 @@
 </template>
 
 <script>
-import Aplayer from 'vue-aplayer'
-
+import HomeMusic from "../components/HomeMusic";
 export default {
   name: "Home",
-  components: {
-    Aplayer
+  components:{
+    HomeMusic
   },
   mounted() {
   },
@@ -82,6 +71,7 @@ export default {
     return {
       sidebarCurrent: 0,
       sidebarText: ['我的首页', '我的博客', '发表评论', '分享音乐'],
+      sidebarLinkTo:['/home','/blog','/comment','/sharemusic'],
       sidebarIconClass: ['iconfont icon-home',
         'iconfont icon-highlight',
         'iconfont icon-keyboard',
@@ -110,6 +100,7 @@ export default {
   methods: {
     replaceClass(index) {
       this.sidebarCurrent = index;
+      console.log(index+"----------"+this.sidebarCurrent)
     },
     searchSomething() {
       if (this.searchValue == "") {
@@ -117,7 +108,8 @@ export default {
       } else {
         window.open("https://www.baidu.com/s?wd=" + this.searchValue);
       }
-    }
+    },
+
   }
 }
 </script>
@@ -140,7 +132,7 @@ html, body {
   top: 0;
   left: 0;
   background: url("../assets/03.jpg");
-  opacity: 0.2;
+  opacity: 0.5;
   background-size: cover;
   filter: blur(10px);
   z-index: -1;
@@ -160,7 +152,6 @@ html, body {
   background: #949da0 !important;
   box-shadow: 0 0 1rem rgba(161, 177, 204, .4);
 }
-
 .aTextColor {
   color: grey;
 }
@@ -181,7 +172,7 @@ html, body {
   margin: 0 auto;
   height: 100%;
   width: 65%;
-  background: #fcfcfc;
+  background: rgba(252,252,252,0.5);
   border-radius: 30px;
   display: flex;
   flex-direction: row;
@@ -212,6 +203,7 @@ html, body {
   /*height: 100%;*/
   /*transition: 0.5s;*/
   overflow: hidden;
+
 }
 
 .navigation ul {
@@ -280,12 +272,7 @@ html, body {
   letter-spacing: 0.5px;
 }
 
-.container {
-  height: 100vh;
-  background: #ffffff;
-  box-shadow: 3px 7px 14px;
-  flex-grow: 1;
-}
+
 
 .sidebar-search {
   /*border-radius: 20px;*/
@@ -318,6 +305,9 @@ html, body {
   text-align: center;
   line-height: 40px;
   /*white-space: normal;*/
-
+}
+.container {
+  /*height: 100vh;*/
+  flex-grow: 1;
 }
 </style>
