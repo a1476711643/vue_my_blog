@@ -6,13 +6,15 @@ import './assets/icon/iconfont.css'
 import './assets/icon/iconfont-about.css'
 import './assets/icon/aboutIconBgAndColor.css'
 import APlayer from '@moefe/vue-aplayer';
+import axios from "axios";
 
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
 Vue.use(ElementUI);
+axios.defaults.baseURL = 'http://127.0.0.1:3001/api/'
 Vue.config.productionTip = false
-
+Vue.prototype.$http = axios
 
 
 Vue.use(APlayer, {

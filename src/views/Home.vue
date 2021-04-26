@@ -66,6 +66,8 @@ export default {
     HomeMusic
   },
   mounted() {
+    let result = this.getComments()
+    // console.log(result);
   },
   data() {
     return {
@@ -92,6 +94,7 @@ export default {
         'https://space.bilibili.com/751555',
         'https://www.baidu.com'
       ],
+      test:[]
 
 
     }
@@ -109,6 +112,13 @@ export default {
         window.open("https://www.baidu.com/s?wd=" + this.searchValue);
       }
     },
+    async getComments(){
+      await this.$http.get('getAllComment').then((res) => {
+        let result = res.data;
+        console.log(result)
+      })
+
+    }
 
   }
 }
@@ -159,7 +169,7 @@ html, body {
 
 .box {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   position: relative;
   /*position: fixed;*/
   /*background: url("../assets/03.jpg");*/

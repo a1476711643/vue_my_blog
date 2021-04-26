@@ -2,6 +2,7 @@
 <div>
 
     <aplayer :audio="audio"
+             :autoplay="true"
              :lrcType="1" />
     <!--<audio src="../assets/song/NoTitle.mp3" controls ></audio>-->
 </div>
