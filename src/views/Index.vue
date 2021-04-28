@@ -84,6 +84,7 @@ body {
 .pic p {
   font-size: 40px;
   text-align: center;
+  margin-top: 40px;
 }
 .aboutMeImg {
   margin-top: 45px;

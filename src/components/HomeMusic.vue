@@ -2,7 +2,7 @@
 <div>
 
     <aplayer :audio="audio"
-             :autoplay="true"
+             :autoplay="false"
              :lrcType="1" />
     <!--<audio src="../assets/song/NoTitle.mp3" controls ></audio>-->
 </div>
@@ -84,8 +84,10 @@ export default {
             "[03:27.190]摇摇欲坠的你所听到的\n" +
             "[03:29.389]逐渐变为我所不知道的声音\n"
       },
-
     }
+  },
+  methods:{
+
   }
 }
 </script>

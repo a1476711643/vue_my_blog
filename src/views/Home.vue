@@ -60,6 +60,8 @@
 
 <script>
 import HomeMusic from "../components/HomeMusic";
+import '../assets/css/public.css'
+import '../assets/css/global.css'
 export default {
   name: "Home",
   components:{
@@ -67,7 +69,7 @@ export default {
   },
   mounted() {
     let result = this.getComments()
-    // console.log(result);
+    console.log(result);
   },
   data() {
     return {
@@ -113,28 +115,19 @@ export default {
       }
     },
     async getComments(){
-      await this.$http.get('getAllComment').then((res) => {
+      await this.$http.get('getAllComment').then((res,err) => {
+        if(err) return console.log(err)
         let result = res.data;
         console.log(result)
       })
+    },
 
-    }
 
   }
 }
 </script>
 
 <style scoped>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html, body {
-  height: 100%;
-}
-
 .beijing {
   width: 100%;
   height: 100%;
@@ -146,24 +139,6 @@ html, body {
   background-size: cover;
   filter: blur(10px);
   z-index: -1;
-}
-
-.allMargin {
-  margin: 40px;
-  background: transparent;
-}
-
-.shadow {
-  box-shadow: 0 0 1rem rgba(161, 177, 204, .4);
-}
-
-.sidebarClick {
-  color: #ffffff;
-  background: #949da0 !important;
-  box-shadow: 0 0 1rem rgba(161, 177, 204, .4);
-}
-.aTextColor {
-  color: grey;
 }
 
 

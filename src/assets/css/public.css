@@ -1,0 +1,17 @@
+.allMargin {
+    margin: 40px;
+    background: transparent;
+}
+
+.shadow {
+    box-shadow: 0 0 1rem rgba(161, 177, 204, .4);
+}
+
+.sidebarClick {
+    color: #ffffff;
+    background: #949da0 !important;
+    box-shadow: 0 0 1rem rgba(161, 177, 204, .4);
+}
+.aTextColor {
+    color: grey;
+}

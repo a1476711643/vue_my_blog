@@ -11,14 +11,12 @@ let pool=mysql.createPool({
     multipleStatements : true,  //是否允许执行多条sql语句
     timezone:"08:00" //大坑，必须加这一句，否则时间不对劲
 })
-
 let Query = (sql,...params) => {
-    return new Promise((resolve,reject)=> {
+    return new Promise((resolve,reject)=>{
         pool.getConnection((err,conn) => {
             if(err){
-                return reject(err)
+                return console.log(err)
             }
-
             conn.query(sql,params,(error,res) => {
                 console.log(res);
                 conn.release();
