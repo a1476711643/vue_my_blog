@@ -49,9 +49,9 @@
         </div>
         <div class="container">
           <el-card class="box-card">
-          <!--  路由坑 匹配index.js-->
-          <router-view />
+            <router-view />
           </el-card>
+          <!--  路由坑 匹配index.js-->
         </div>
       </div>
     </div>
@@ -292,7 +292,11 @@ export default {
   /*white-space: normal;*/
 }
 .container {
+  width: 100%;
   /*height: 100vh;*/
   flex-grow: 1;
+}
+.box-card {
+
 }
 </style>
